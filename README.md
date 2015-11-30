@@ -1,4 +1,4 @@
-# BlueNinja scripts for linux
+# BlueNinja scripts for linux and mac
 CEREVO BlueNinja Setup Scripts for Bash
 
 ##セットアップ

@@ -15,10 +15,10 @@ if [ ! -e ${TZ1_BASE}tools ]; then
 	mkdir ${TZ1_BASE}tools
 fi
 
-if [ ! -e gcc-arm-none-eabi-4_9-2015q1-20150306-linux.tar.bz2 ]; then
-	wget https://launchpad.net/gcc-arm-embedded/4.9/4.9-2015-q1-update/+download/gcc-arm-none-eabi-4_9-2015q1-20150306-linux.tar.bz2
+if [ ! -e gcc-arm-none-eabi-4_9-2015q3-20150921-mac.tar.bz2 ]; then
+	wget https://launchpad.net/gcc-arm-embedded/4.9/4.9-2015-q3-update/+download/gcc-arm-none-eabi-4_9-2015q3-20150921-mac.tar.bz2
 fi
-tar -jxf gcc-arm-none-eabi-4_9-2015q1-20150306-linux.tar.bz2 -C ${TZ1_BASE}tools --strip=1
+tar -jxf gcc-arm-none-eabi-4_9-2015q3-20150921-mac.tar.bz2 -C ${TZ1_BASE}tools --strip=1
 
 echo "Setup SDKs"
 if [ ! -e ${TZ1_BASE}sdk ]; then
@@ -29,12 +29,12 @@ if [ ! -e ${TZ1_BASE}sdk/ARM.CMSIS ]; then
 	mkdir ${TZ1_BASE}sdk/ARM.CMSIS
 fi
 
-if [ -e "ARM.CMSIS.3.20.4.pack" ]; then
-	unzip -qd ${TZ1_BASE}sdk/ARM.CMSIS ARM.CMSIS.3.20.4.pack
-elif [ -e "ARM.CMSIS.3.20.4.zip" ]; then
-	unzip -qd ${TZ1_BASE}sdk/ARM.CMSIS ARM.CMSIS.3.20.4.zip
+if [ -e "ARM.CMSIS.4.5.0.pack" ]; then
+	unzip -qd ${TZ1_BASE}sdk/ARM.CMSIS ARM.CMSIS.4.5.0.pack
+elif [ -e "ARM.CMSIS.4.5.0.zip" ]; then
+	unzip -qd ${TZ1_BASE}sdk/ARM.CMSIS ARM.CMSIS.4.5.0.zip
 else 
-	echo "ARM.CMSIS.3.20.4 is notfound."	
+	echo "ARM.CMSIS.4.5.0 is notfound."	
 	exit
 fi
 
@@ -53,7 +53,7 @@ echo "GNU tool TZ10xx Support"
 cp tz10xx.specs ${TZ1_BASE}tools/arm-none-eabi/lib
 ${TZ1_BASE}tools/bin/arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mthumb-interwork -march=armv7e-m -mfloat-abi=soft -std=c99 -g -O0 -c tz10xx-crt0.c -o ${TZ1_BASE}tools/arm-none-eabi/lib/tz10xx-crt0.o
 
-echo "This script does't install OpenOCD."
+echo "This script doesn't install OpenOCD."
 echo "OpenOCD can be installed by using apt."
 
 echo "Setup Scripts."
