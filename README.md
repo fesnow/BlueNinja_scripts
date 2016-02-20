@@ -1,10 +1,10 @@
 # BlueNinja scripts for linux and mac
 CEREVO BlueNinja Setup Scripts for Bash
 
-##セットアップ
-* OpenOCDはインストールしません。（別途apt-getでインストールして下さい）
+## Setup
+* It doesn't install OpenOCD. Please install it your self.
 
 
-##開発環境の起動
-    source start_shell
+## Run the development environment
+  source start_shell
 
