@@ -1,13 +1,7 @@
 #! /bin/bash
 
-if ! brew list openocd > /dev/null 2>&1; then
-  echo "This script requires openocd installed by Homebrew!"
-  exit 1
-fi
-
-TZ1_BASE=../Cerevo/CDP-TZ01B/
-INSTALL_FILES=install_files/
-OCD_HOME=$(brew --prefix openocd)
+export TZ1_BASE=../Cerevo/CDP-TZ01B/
+export INSTALL_FILES=install_files/
 
 cd ${INSTALL_FILES}
 
@@ -39,7 +33,7 @@ if [ -e "ARM.CMSIS.3.20.4.pack" ]; then
 	unzip -qd ${TZ1_BASE}sdk/ARM.CMSIS ARM.CMSIS.3.20.4.pack
 elif [ -e "ARM.CMSIS.3.20.4.zip" ]; then
 	unzip -qd ${TZ1_BASE}sdk/ARM.CMSIS ARM.CMSIS.3.20.4.zip
-else 
+else
 	echo "ARM.CMSIS.3.20.4 is notfound."
 	exit
 fi
@@ -61,9 +55,6 @@ ${TZ1_BASE}tools/bin/arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mthumb-interwork
 
 echo "This script doesn't install OpenOCD."
 echo "OpenOCD can be installed by using apt."
-
-cp tz10xx.cfg ${OCD_HOME}/share/openocd/scripts/target/
-cp tz10xx_reset.tcl ${OCD_HOME}/share/openocd/scripts/target/
 
 echo "Setup Scripts."
 cp -r ../_TZ1/* ${TZ1_BASE}
